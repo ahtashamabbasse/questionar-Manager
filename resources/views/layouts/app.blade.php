@@ -12,6 +12,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .inputerror{
+            border:2px solid red;
+        }
+    </style>
 </head>
 <body>
     <div id="app">

@@ -24,21 +24,22 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $input=$request->all();
-        $input['user_id']=Auth::user()->id;
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'duration' => 'required',
-            'time_unit' => 'required',
-            'resume' => 'required',
-            'publish' => 'required',
-
-        ]);
-        $question= new Questionar();
-        $question->create($input);
-        Session::flash("class","success");
-        Session::flash("heading","Success");
-        Session::flash("noty","Questionar Has Been Created Successfully");
-        return redirect("questionars");
+        dd($input);
+//        $input['user_id']=Auth::user()->id;
+//        $this->validate($request, [
+//            'name' => 'required|max:255',
+//            'duration' => 'required',
+//            'time_unit' => 'required',
+//            'resume' => 'required',
+//            'publish' => 'required',
+//
+//        ]);
+//        $question= new Questionar();
+//        $question->create($input);
+//        Session::flash("class","success");
+//        Session::flash("heading","Success");
+//        Session::flash("noty","Questionar Has Been Created Successfully");
+//        return redirect("questionars");
 
     }
 

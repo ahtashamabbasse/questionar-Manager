@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
 
                 <h1>Add Question</h1>
-                {!! Form::open(['route'=>'question.store','method'=>'post']) !!}
+                {!! Form::open(['route'=>'question.store','method'=>'post','id'=>'questionForm']) !!}
 
 
                 <div class="question">
@@ -42,13 +42,12 @@
 
                         <div class="mcqPanel" style="display: none;">
                             <div class="mcq-content">
-                                <div class="form-group">
+                                <div class="form-group mcqListing">
                                     <div class="row">
                                         <div class="col-md-2">Choice 1</div>
-                                        <div class="col-md-6">{!! Form::text('choice[]',null, ['class' => 'form-control mcq','placeholder'=>"Enter Choice "]) !!}</div>
+                                        <div class="col-md-6">{!! Form::text('choice',null, ['class' => 'form-control mcq','placeholder'=>"Enter Choice "]) !!}</div>
                                         <div class="col-md-4">
-                                            <label> {!! Form::radio('correct', 'correct',['class'=>'form-control']) !!}
-                                                Correct</label>
+                                            <label> {!! Form::radio('correct1',null,['class'=>'form-control']) !!}Correct</label>
                                             <a href="" class="deleteMCQ">Delete</a>
                                         </div>
                                     </div>

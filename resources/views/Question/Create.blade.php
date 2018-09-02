@@ -45,17 +45,17 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-2">Choice 1</div>
-                                        <div class="col-md-6">{!! Form::text('choice[]',null, ['class' => 'form-control','placeholder'=>"Enter Choice "]) !!}</div>
+                                        <div class="col-md-6">{!! Form::text('choice[]',null, ['class' => 'form-control mcq','placeholder'=>"Enter Choice "]) !!}</div>
                                         <div class="col-md-4">
                                             <label> {!! Form::radio('correct', 'correct',['class'=>'form-control']) !!}
                                                 Correct</label>
-                                            <a href="">Delete</a>
+                                            <a href="" class="deleteMCQ">Delete</a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <a class="addMCQ" >Add MCQ</a>
+                            </div>
+                            <a class="addMCQ">Add MCQ</a>
 
                         </div>
 
@@ -73,9 +73,9 @@
 
                 {!! Form::close() !!}
 
-
             </div>
         </div>
+    </div>
     </div>
 
 

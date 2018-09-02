@@ -16,17 +16,19 @@ var Question = function () {
     };
 
 
-    var profileSetup = function (val) {
-        console.log(val)
+    var saveQuestion = function (val) {
+        console.log(val.url)
         $.ajax({
             url: val.url,
             type: 'POST',
-            data: val.data,
+            data: {'_token':val._token,'data':val.details},
             dataType: 'JSON',
             success: function (data) {
-                console.log(data)
-                if (data.status) {
-                    redirectURL = document.location.origin + '/profile/' + data.userId
+
+                if (data===true){
+                    console.log('done')
+                    redirectURL = document.location.origin + "/questionars"
+                    console.log(redirectURL)
                     window.location.replace(redirectURL)
                 }
 
@@ -120,7 +122,11 @@ var Question = function () {
             })
             $("#questionForm").on('submit',function (e) {
                 e.preventDefault();
+                questionar=$("#questionar").text()
 
+
+                var url=$(this).attr('action')
+                var token=$('input[name=_token]').val();
                 var array=[];
 
                 $('.question-content').each( function (index, elem) {
@@ -128,6 +134,8 @@ var Question = function () {
                     data={}
                     data.type=$(this).find('select.type').prop('value')
                     data.title=$(this).find('input[name=title]').val()
+                    data.questionar_id=questionar
+
                     if (data.type=="text")
                     {
                         data.answer=$(this).find('input[name=answer]').val()
@@ -148,21 +156,25 @@ var Question = function () {
                             }
                             else
                             {
-                                mcq.correct=$(this).find('input[type=radio]:checked').val();
-                                console.log(mcq.correct)
+                                data.answer=$(this).find('input[type=radio]:checked').val();
+                                console.log('a')
                             }
 
 
                         })
 
-                        data.choise_data=JSON.stringify(mcq)
+                        data.mcq_choice_data=JSON.stringify(mcq)
                     }
                     array.push(data)
                     main={}
+                    main.url=url
+                    main._token=token
                     main.details=array
 
                 })
-                console.log(main)
+                saveQuestion(main)
+
+
 
 
             })

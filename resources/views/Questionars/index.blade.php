@@ -35,11 +35,12 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     @forelse($questionars as $questionar)
                         <tr>
                             <td>{{$questionar->id}}</td>
                             <td>{{$questionar->name}}</td>
-                            <td>{{$questionar->id}} | <a href="">Add</a> </td>
+                            <td>{{$questionar->questions->count()}} | <a href="{{route('question.create',$questionar->id)}}">Add</a> </td>
                             <td>{{$questionar->duration.$questionar->time_unit}}  </td>
                             <td>{{$questionar->resume}}</td>
                             <td>{{$questionar->publish}}</td>

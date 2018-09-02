@@ -17,5 +17,10 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource("/questionars",'QuestionarsController');
-Route::resource("/question",'QuestionController');
+Route::get('question/create/{id}', [
+    'as' => 'question.create',
+    'uses' => 'QuestionController@create'
+]);
+Route::resource("/question",'QuestionController',['except' => 'create']);
+
 

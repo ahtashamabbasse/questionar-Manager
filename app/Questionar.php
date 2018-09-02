@@ -9,4 +9,11 @@ class Questionar extends Model
     //
     protected $guarded = [];
 
+    function questions(){
+        return $this->hasMany(Question::class);
+    }
+
+
+
+
 }

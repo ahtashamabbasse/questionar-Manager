@@ -3,10 +3,19 @@
 namespace QA\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Response;
 use QA\Questionar;
+use QA\Question;
+
+
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -24,22 +33,10 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $input=$request->all();
-        dd($input);
-//        $input['user_id']=Auth::user()->id;
-//        $this->validate($request, [
-//            'name' => 'required|max:255',
-//            'duration' => 'required',
-//            'time_unit' => 'required',
-//            'resume' => 'required',
-//            'publish' => 'required',
-//
-//        ]);
-//        $question= new Questionar();
-//        $question->create($input);
-//        Session::flash("class","success");
-//        Session::flash("heading","Success");
-//        Session::flash("noty","Questionar Has Been Created Successfully");
-//        return redirect("questionars");
+        $question=new Question();
+        foreach ($input['data'] as $d)
+            $question->create($d);
+        return Response::json(true);
 
     }
 

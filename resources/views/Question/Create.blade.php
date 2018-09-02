@@ -6,6 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
 
                 <h1>Add Question</h1>
+                <p style="display: none;" id="questionar">{{request()->route()->id}}</p>
                 {!! Form::open(['route'=>'question.store','method'=>'post','id'=>'questionForm']) !!}
 
 
@@ -76,6 +77,7 @@
         </div>
     </div>
     </div>
+
 
 
 @endsection

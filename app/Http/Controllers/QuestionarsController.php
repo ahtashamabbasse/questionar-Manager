@@ -5,10 +5,15 @@ namespace QA\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use QA\Question;
 use QA\Questionar;
 
 class QuestionarsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -82,7 +87,10 @@ class QuestionarsController extends Controller
     public function destroy($id)
     {
         $questionar=Questionar::findOrFail($id);
+        $question=Question::whereQuestionarId($id);
+        $question->delete();
         $questionar->delete();
+
         Session::flash("class","success");
         Session::flash("heading","Success");
         Session::flash("noty","Questionar Has Been Deleted");
